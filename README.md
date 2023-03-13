@@ -3,7 +3,7 @@
 ![Mask-URL](https://github.com/Ux4hack/Mask-URL/blob/main/src/Mask-URL1.jpg)
 
 <p align="center">
-<img src="https://img.shields.io/badge/Leng-bash-color=B60909?style=flat-square">
+<img src="https://img.shields.io/badge/Leng-bash-&style=flat-square">
 <img src="https://img.shields.io/badge/For-Termux-&=colorB60909?style=flat-square">
 </p>
 
