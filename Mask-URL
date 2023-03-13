@@ -1,0 +1,101 @@
+#!/bin/bash
+#
+# Hecha por Ux4hack 13 de Marzo del 20223 <3
+# TELEGRAM: @Ux4hack
+# GitHub: https://github.com/Ux4hack
+#
+R='\033[1;31m'
+RED="\e[101m"
+G='\033[90m'
+W="\033[0m"
+V='\033[1;32m'
+if [ ! -x /data/data/com.termux/files/usr/bin/curl ]; then
+    yes|pkg install curl
+fi
+if [ ! -x /data/data/com.termux/files/usr/bin/pv ]; then
+    yes|pkg install pv
+fi
+verif() {  
+  if [ ! "${1//:*}" = http ]; then
+        if [ ! "${1//:*}" = https ]; then
+          echo -e "${R}ERROR: ${W}URL errónea"
+          exit
+fi  
+  fi
+}
+function banner() {
+    clear
+    echo -e "${R} __  __           _    ${G} _   _ ____  _"
+    echo -e "${R}|  \/  | __ _ ___| | __${G}| | | |  _ \| |"
+    echo -e "${R}| |\/| |/ _  / __| |/ /${G}| | | | |_) | |"
+    echo -e "${R}| |  | | (_| \__ \   < ${G}| |_| |  _ <| |__"
+    echo -e "${R}|_|  |_|\__,_|___/_|\_⧹\033[90m ⧹___⧸|_| \_\____|"
+    echo
+    echo -e "      ${R}..:${W} Enmascarar URL Phishing ${R}:..    "
+    echo
+    echo -e "  ${W}${RED}::Ux4hack no se responsabiliza de::"${W}
+    echo -e "  ${W}${RED}::los daños causados por Mask-URL::"${W}
+    echo
+}
+banner
+echo -e "${R}[${G}+${R}]${W} Ingresa una URL"
+echo -ne "    ┕──▶ "
+read -r url
+verif ${url}
+shorter=${short#https://}
+sleep 1
+banner
+echo -ne "${R}[${G}+${R}]${G} URL: ${W}"
+echo "${url}"|pv -qL 10
+sleep 0.9
+banner
+echo -e "${R}[${G}+${R}]${W} Ingresa dominio de enmascaramiento"
+echo -e "${R}[${G}+${R}]${W} EJEMPLO: google.com, instagram.com"
+echo -ne "    ┕──▶ "
+read -r dominio
+if [ -z ${dominio} ]; then
+echo
+echo -e "${R}ERROR:${W} No escribiste nada..."
+exit
+fi
+sleep 1
+banner
+echo -ne "${R}[${G}+${R}]${G} URL: ${W}"
+echo "${url}"
+echo -ne "${R}[${G}+${R}]${G} DOMINIO FALSO: ${W}"
+echo "https://${dominio}"|pv -qL 10
+sleep 0.9
+banner
+echo -e "${R}[${G}+${R}]${W} Añade palabras de Ing.Social a la URL"
+echo -e "${R}[${G}+${R}]${W} EJEMPLO: Internet gratis, apps, etc"
+echo -ne "    ┕──▶ "
+read -r palabras1
+palabras=$(echo -e "${palabras1}"| tr ' ' '-')
+if [ -z ${palabras} ]; then
+echo
+echo -e "${R}ERROR:${W} No escribiste nada..."
+exit
+fi
+sleep 1
+banner
+echo -ne "${R}[${G}+${R}]${G} URL: ${W}"
+echo "${url}"
+echo -ne "${R}[${G}+${R}]${G} DOMINIO FALSO: ${W}"
+echo "https://${dominio}"
+echo -ne "${R}[${G}+${R}]${G} PALABRAS DE S.E: ${W}"
+echo "${palabras}"|pv -qL 10
+sleep 1
+echo
+echo -e "${R}[${G}+${R}]${W} Reuniendo datos..."
+sleep 2
+echo -e "${R}[${G}+${R}]${W} Generando enlace..."
+short=$(curl -s https://is.gd/create.php\?format\=simple\&url\=${url})
+shorter=${short#https://}
+sleep 0.5
+fina=https://$dominio-$palabras@$shorter
+sleep 0.5
+banner
+echo -e "${R}[${G}+${R}]${W} URL Generada éxitosamente..."
+echo -ne "    ┕─▶ "
+echo "${fina}"|pv -qL 10
+echo
