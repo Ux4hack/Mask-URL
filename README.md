@@ -29,11 +29,6 @@ Ejecutar herramienta con:
 
 * `bash Mask-URL`
 
-## [COMANDO SIMPLE]
-```
-apt update && apt upgrade -y;yes|pkg install git;git clone https://github.com/Ux4hack/Mask-URL;cd Mask-URL;chmod +x Mask-URL;bash Mask-URL
-```
-
 ## [SCREENSHOTS]
 Datos brindados ↓
 ![Mask-URL](https://github.com/Ux4hack/Mask-URL/blob/main/src/Mask-URL2.jpg)
